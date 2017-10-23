@@ -1,0 +1,4 @@
+Django==1.11.6
+psycopg2==2.7.3
+djangorestframework==3.7
+waitress==1.1
