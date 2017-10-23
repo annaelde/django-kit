@@ -114,4 +114,4 @@ Switch($installVue)
 # Activate app server
 Write-Host "Your project is now configured. Starting up the WSGI server..."
 Set-Location ./site
-Invoke-Expression "waitress-serve --listen=0.0.0.0:8080 $($env.Get_Item("COMPOSE_PROJECT_NAME")).wsgi:application"
+Invoke-Expression "python manage.py runserver 0.0.0.0:8080"
