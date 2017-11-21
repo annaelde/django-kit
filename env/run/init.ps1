@@ -21,15 +21,6 @@ Get-Content ./env/.env | Foreach-Object{
     }
 }
 
-# Add IP address environment variable (necessary for Docker containers to contact host machine)
-$address =  (Get-NetAdapter Wi-Fi | Get-NetIPAddress -AddressFamily IPv4 | Select IPAddress).IPAddress
-# Try Ethernet network if Wi-Fi didn't work
-if (-Not $address) {
-    $address = (Get-NetAdapter Ethernet | Get-NetIPAddress -AddressFamily IPv4 | Select IPAddress).IPAddress
-}
-Write-Host "The following IP address was automatically detected: $address."
-Add-Content ./env/.env "`nADDRESS=$address"
-
 # Create Python virtual env
 Write-Host "Creating virtual environment."
 python -m venv ./env/py
